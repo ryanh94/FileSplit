@@ -5,11 +5,16 @@ namespace FileMinifier
     public class Run
     {
         private readonly ConsoleIO _console;
-        private readonly ValidateFile _validate;  
-        public Run(ConsoleIO console, ValidateFile validate)
+        private readonly ValidateFile _validate;
+        private readonly GlueFilesService _glueFiles;
+        private readonly MinifyFileService _minifyFile;
+
+        public Run(ConsoleIO console, ValidateFile validate, GlueFilesService glueFiles, MinifyFileService minifyFile)
         {
             _console = console;
-            _validate = validate;   
+            _validate = validate;
+            _glueFiles = glueFiles;
+            _minifyFile = minifyFile;
         }
 
         public void StartMinimise()
@@ -27,9 +32,9 @@ namespace FileMinifier
 
                 } while (_validate.CheckValidLocation(inputFilePath) == false);
             }
-            MinifyFileService.SplitFile(inputFilePath, 1000, "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles");
+            _minifyFile.SplitFile(inputFilePath, 1000, "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles");
 
-            GlueFilesService.CombineMultipleFilesIntoSingleFile("C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles", "f*", "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\GluedFile");
+            _glueFiles.CombineMultipleFilesIntoSingleFile("C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles", "f*", "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\GluedFile");
         }
     }
 }

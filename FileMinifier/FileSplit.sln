@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileMinifier", "FileMinifie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileServices", "FileServices\FileServices.csproj", "{2099D512-967D-489B-A969-3B4BDAE2419C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileServices.Tests", "FileServices.Tests\FileServices.Tests.csproj", "{4A2B7400-11FF-4BD7-AAFE-EDFFEC784C5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2099D512-967D-489B-A969-3B4BDAE2419C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2099D512-967D-489B-A969-3B4BDAE2419C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2099D512-967D-489B-A969-3B4BDAE2419C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A2B7400-11FF-4BD7-AAFE-EDFFEC784C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A2B7400-11FF-4BD7-AAFE-EDFFEC784C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A2B7400-11FF-4BD7-AAFE-EDFFEC784C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A2B7400-11FF-4BD7-AAFE-EDFFEC784C5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

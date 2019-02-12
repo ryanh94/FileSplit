@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,9 @@ namespace FileMinifier
         {
             ConsoleIO console = new ConsoleIO();
             ValidateFile validateFile = new ValidateFile();
-
-            var run = new Run(console, validateFile);
+            var minify = new MinifyFileService();
+            var glueFile = new GlueFilesService();
+            var run = new Run(console, validateFile, glueFile, minify);
 
             run.StartMinimise();
         }

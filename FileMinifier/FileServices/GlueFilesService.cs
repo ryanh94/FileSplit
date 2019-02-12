@@ -1,25 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace FileServices
 {
-    public static class GlueFilesService
+    public class GlueFilesService
     {
-        public static void CombineMultipleFilesIntoSingleFile(string inputDirectoryPath, string inputFileNamePattern, string outputFilePath)
+        public void CombineMultipleFilesIntoSingleFile(string inputDirectoryPath, string inputFileNamePattern, string outputFilePath)
         {
             string[] inputFilePaths = Directory.GetFiles(inputDirectoryPath, inputFileNamePattern);
             Console.WriteLine("Number of files: {0}.", inputFilePaths.Length);
             using (var outputStream = File.Create(outputFilePath))
             {
-                foreach (var inputFilePath in inputFilePaths)
+                List<Stream> inputStreams = new List<Stream>();
+                try
                 {
-                    using (var inputStream = File.OpenRead(inputFilePath))
+                    foreach (var inputFilePath in inputFilePaths)
                     {
-                        // Buffer size can be passed as the second argument.
-                        inputStream.CopyTo(outputStream);
+                        inputStreams.Add(File.OpenRead(inputFilePath));
+                        Console.WriteLine("The file {0} has been processed.", inputFilePath);
                     }
-                    Console.WriteLine("The file {0} has been processed.", inputFilePath);
+                    CombineMultipleFilesIntoSingleFile(inputStreams, outputStream);
                 }
+                finally
+                {
+                    foreach (var inputStream in inputStreams)
+                    {
+                        inputStream?.Dispose();
+                    }
+                }
+            }
+        }
+        public void CombineMultipleFilesIntoSingleFile(IEnumerable<Stream> inputStreams, Stream outputStream)
+        {
+            foreach (var inputStream in inputStreams)
+            {
+                inputStream.CopyTo(outputStream);
             }
         }
     }
