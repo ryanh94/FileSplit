@@ -34,7 +34,9 @@ namespace FileMinifier
             }
             _minifyFile.SplitFile(inputFilePath, 1000, "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles");
 
-            _glueFiles.CombineMultipleFilesIntoSingleFile("C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles", "f*", "C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\GluedFile");
+            var fileType = _validate.GetFileType(inputFilePath);
+
+            _glueFiles.CombineMultipleFilesIntoSingleFile("C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\BrokenDownFiles", "f*", $"C:\\Users\\RyanB\\OneDrive\\Documents\\TestingMinimiser\\GluedFile.{fileType}");
         }
     }
 }
